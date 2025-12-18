@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بريق - bariq | لغسيل السيارات المتنقل</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #00d2ff;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .services-desc {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .pricing-table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 300px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #777;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn {
+            background-color: #25d366;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #128c7e;
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-table {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>بريق - Bariq</h1>
+        <p>خدمة غسيل السيارات المتنقلة.. نصلك أينما كنت!</p>
+    </header>
+
+    <div class="container">
+        <section class="services-desc">
+            <h2>لماذا تختار "بريق"؟</h2>
+            <p>نحن نوفر لك الوقت والجهد بأحدث المعدات ومواد التنظيف عالية الجودة لنعيد لسيارتك لمعانها وكأنها جديدة.</p>
+        </section>
+
+        <div class="pricing-table">
+            <div class="card">
+                <h3>الغسيل الخارجي</h3>
+                <div class="price">25 <span>د.ل</span></div>
+                <ul class="features">
+                    <li>غسيل الهيكل الخارجي</li>
+                    <li>تلميع الإطارات</li>
+                    <li>تجفيف احترافي</li>
+                </ul>
+                <a href="https://wa.me/218928666754?text=مرحباً بريق، أريد طلب باقة: الغسيل الخارجي (25 دينار)" class="btn">اطلب عبر واتساب</a>
+            </div>
+
+            <div class="card" style="border-top-color: #f39c12;">
+                <h3>داخلي + خارجي</h3>
+                <div class="price">40 <span>د.ل</span></div>
+                <ul class="features">
+                    <li>غسيل خارجي كامل</li>
+                    <li>تنظيف الأرضيات والديكور</li>
+                    <li>تلميع الزجاج الداخلي</li>
+                    <li>تعطير السيارة</li>
+                </ul>
+                <a href="https://wa.me/218928666754?text=مرحباً بريق، أريد طلب باقة: غسيل داخلي وخارجي (40 دينار)" class="btn">اطلب عبر واتساب</a>
+            </div>
+
+            <div class="card" style="border-top-color: #e74c3c;">
+                <h3>الغسيل الكامل</h3>
+                <div class="price">65 <span>د.ل</span></div>
+                <ul class="features">
+                    <li>تنظيف عميق للمقاعد</li>
+                    <li>تلميع المحرك</li>
+                    <li>حماية نانو سريعة</li>
+                    <li>تعقيم شامل للمقصورة</li>
+                </ul>
+                <a href="https://wa.me/218928666754?text=مرحباً بريق، أريد طلب باقة: الغسيل الكامل (65 دينار)" class="btn">اطلب عبر واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة لـ بريق &copy;2025</p>
+        <p>رقم الهاتف: 0928666754</p>
+    </footer>
+
+</body>
+</html>
