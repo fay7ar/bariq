@@ -3,180 +3,615 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بريق - bariq | لغسيل السيارات المتنقل</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>بريق - باقة الرؤية الواضحة للعناية بالسيارة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #00d2ff;
-            --dark-color: #333;
-            --light-color: #f8f9fa;
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Cairo', sans-serif;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background-color: var(--light-color);
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
         }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
+        
         .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        .services-desc {
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin: 40px 0;
         }
-
-        .pricing-table {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            width: 300px;
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s ease;
+        
+        .header-content {
             display: flex;
             flex-direction: column;
-            border-top: 5px solid var(--primary-color);
+            align-items: center;
+            gap: 10px;
         }
-
-        .card:hover {
-            transform: translateY(-10px);
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 20px 0;
+        
+        .logo-text h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
-
-        .price span {
-            font-size: 1rem;
-            color: #777;
+        
+        .logo-text span {
+            color: #ffd700;
         }
-
-        .features {
-            list-style: none;
-            margin-bottom: 30px;
-            flex-grow: 1;
+        
+        .logo-text .tagline {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-top: 8px;
+            font-weight: 300;
         }
-
-        .features li {
-            padding: 10px 0;
+        
+        .slogan {
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 10px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            background-color: white;
             border-bottom: 1px solid #eee;
         }
-
-        .btn {
-            background-color: #25d366;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            display: inline-block;
-            transition: background 0.3s;
+        
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
         }
-
-        .btn:hover {
-            background-color: #128c7e;
+        
+        .product-image {
+            flex: 1;
+            min-width: 300px;
         }
-
-        footer {
-            background: var(--dark-color);
-            color: white;
+        
+        .product-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-title {
+            color: #1a237e;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        
+        .price {
+            font-size: 42px;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-bottom: 30px;
+        }
+        
+        .price span {
+            font-size: 22px;
+            color: #777;
+            font-weight: normal;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        
+        .features {
+            margin-bottom: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .feature i {
+            color: #1a237e;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        
+        /* Order Form */
+        .order-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .form-title {
+            color: #1a237e;
+            font-size: 28px;
+            margin-bottom: 25px;
             text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3949ab;
+            box-shadow: 0 0 0 2px rgba(57, 73, 171, 0.2);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, #1a237e, #3949ab);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, #3949ab, #1a237e);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(57, 73, 171, 0.3);
+        }
+        
+        /* Confirmation Message */
+        .confirmation {
+            background-color: #e8f5e9;
+            border-right: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .confirmation.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        .confirmation h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            background-color: #f0f4ff;
+            padding: 50px 0;
+            margin-top: 40px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #1a237e;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 40px;
+            color: #1a237e;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card h3 {
+            color: #1a237e;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a237e;
+            color: white;
             padding: 30px 0;
+            text-align: center;
             margin-top: 50px;
         }
-
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 15px;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
-            .pricing-table {
+            .header-content {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo-text h1 {
+                font-size: 36px;
+            }
+            
+            .logo-text .tagline {
+                font-size: 18px;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .product-title {
+                font-size: 28px;
+            }
+            
+            .price {
+                font-size: 36px;
+            }
+            
+            .order-form {
+                padding: 25px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-
+    <!-- Header -->
     <header>
-        <h1>بريق - Bariq</h1>
-        <p>خدمة غسيل السيارات المتنقلة.. نصلك أينما كنت!</p>
-    </header>
-
-    <div class="container">
-        <section class="services-desc">
-            <h2>لماذا تختار "بريق"؟</h2>
-            <p>نحن نوفر لك الوقت والجهد بأحدث المعدات ومواد التنظيف عالية الجودة لنعيد لسيارتك لمعانها وكأنها جديدة.</p>
-        </section>
-
-        <div class="pricing-table">
-            <div class="card">
-                <h3>الغسيل الخارجي</h3>
-                <div class="price">25 <span>د.ل</span></div>
-                <ul class="features">
-                    <li>غسيل الهيكل الخارجي</li>
-                    <li>تلميع الإطارات</li>
-                    <li>تجفيف احترافي</li>
-                </ul>
-                <a href="https://wa.me/218928666754?text=مرحباً بريق، أريد طلب باقة: الغسيل الخارجي (25 دينار)" class="btn">اطلب عبر واتساب</a>
-            </div>
-
-            <div class="card" style="border-top-color: #f39c12;">
-                <h3>داخلي + خارجي</h3>
-                <div class="price">40 <span>د.ل</span></div>
-                <ul class="features">
-                    <li>غسيل خارجي كامل</li>
-                    <li>تنظيف الأرضيات والديكور</li>
-                    <li>تلميع الزجاج الداخلي</li>
-                    <li>تعطير السيارة</li>
-                </ul>
-                <a href="https://wa.me/218928666754?text=مرحباً بريق، أريد طلب باقة: غسيل داخلي وخارجي (40 دينار)" class="btn">اطلب عبر واتساب</a>
-            </div>
-
-            <div class="card" style="border-top-color: #e74c3c;">
-                <h3>الغسيل الكامل</h3>
-                <div class="price">65 <span>د.ل</span></div>
-                <ul class="features">
-                    <li>تنظيف عميق للمقاعد</li>
-                    <li>تلميع المحرك</li>
-                    <li>حماية نانو سريعة</li>
-                    <li>تعقيم شامل للمقصورة</li>
-                </ul>
-                <a href="https://wa.me/218928666754?text=مرحباً بريق، أريد طلب باقة: الغسيل الكامل (65 دينار)" class="btn">اطلب عبر واتساب</a>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-text">
+                    <h1>بريق <span>bariq</span></h1>
+                    <p class="tagline">عناية شاملة لسيارتك بأفضل جودة</p>
+                    <div class="slogan">رؤية واضحة وأمان أكبر لرحلتك</div>
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="product-image">
+                    <img src="https://up6.cc/2026/02/177033519975151.jpg" alt="باقة الرؤية الواضحة">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">باقة الرؤية الواضحة</h2>
+                    <p class="product-description">
+                        باقة متكاملة للعناية الشاملة بأنوار وزجاج سيارتك. تمنحك رؤية مثالية في جميع الظروف الجوية مع حماية شاملة لزجاج السيارة.
+                    </p>
+                    
+                    <div class="price">
+                        <span>75 دينار</span> 55 دينار
+                    </div>
+                    
+                    <div class="features">
+                        <h3 style="margin-bottom: 15px; color: #1a237e;">مكونات الباقة:</h3>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>منتج تنظيف أنوار السيارة (يعيد الأنوار كالجديدة)</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>منتج عزل زجاج السيارة من الرطوبة والماء</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>فوط ونشاف عالية الجودة للتلميع</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>دليل الاستخدام المفصل</span>
+                        </div>
+                    </div>
+                    
+                    <div class="features">
+                        <h3 style="margin-bottom: 15px; color: #1a237e;">فوائد الباقة:</h3>
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <span>تحسين رؤية القيادة الليلية بنسبة تصل إلى 40%</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <span>حماية زجاج السيارة من تأثير الرطوبة والمطر</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <span>سهولة الاستخدام - نتائج فورية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">فوائد العناية بأنوار وزجاج السيارة</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>أمان أفضل</h3>
+                    <p>أنوار أكثر وضوحاً تعني رؤية أفضل للطريق وتقليل حوادث السير</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>راحة في القيادة</h3>
+                    <p>زجاج معزول يمنع تشكل الضباب والرطوبة مما يحسن الرؤية</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>حماية طويلة الأمد</h3>
+                    <p>عزل الزجاج يحميه من الأتربة والأوساخ ويسهل عملية التنظيف</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>توفير المال</h3>
+                    <p>العناية بالأنوار تمنع تعتيمها وبالتالي توفر تكلفة استبدالها</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="container">
+        <div class="order-form">
+            <h2 class="form-title">اطلب باقة الرؤية الواضحة الآن</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل *</label>
+                    <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="أدخل رقم هاتفك">
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">المدينة *</label>
+                    <select id="city" name="city" required>
+                        <option value="" disabled selected>اختر مدينتك</option>
+                        <option value="طرابلس">طرابلس</option>
+                        <option value="بنغازي">بنغازي</option>
+                        <option value="مصراتة">مصراتة</option>
+                        <option value="الزاوية">الزاوية</option>
+                        <option value="سبها">سبها</option>
+                        <option value="طبرق">طبرق</option>
+                        <option value="الخمس">الخمس</option>
+                        <option value="زليتن">زليتن</option>
+                        <option value="أخرى">مدينة أخرى</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="otherCityGroup" style="display: none;">
+                    <label for="otherCity">يرجى تحديد مدينتك</label>
+                    <input type="text" id="otherCity" name="otherCity" placeholder="أدخل اسم مدينتك">
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">الكمية المطلوبة</label>
+                    <select id="quantity" name="quantity">
+                        <option value="1" selected>1 باقة</option>
+                        <option value="2">2 باقة</option>
+                        <option value="3">3 باقات</option>
+                        <option value="4">4 باقات</option>
+                        <option value="5">5 باقات</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> تأكيد الطلب
+                </button>
+            </form>
+            
+            <div id="confirmationMessage" class="confirmation">
+                <h3><i class="fas fa-check-circle"></i> تم استلام طلبك بنجاح!</h3>
+                <p>شكراً لطلبك <strong>باقة الرؤية الواضحة</strong>. تم تسجيل طلبك بنجاح وسنتواصل معك قريباً لتأكيد التفاصيل.</p>
+                <p style="margin-top: 10px; font-weight: bold; color: #d32f2f;">الباقة ستتوفر قريباً للتسليم وسنخطرك عند توفرها!</p>
+                <p style="margin-top: 10px;">رقم طلبك: <span id="orderNumber" style="font-weight: bold;">BRQ-2023-001</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>جميع الحقوق محفوظة لـ بريق &copy;2025</p>
-        <p>رقم الهاتف: 0928666754</p>
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>fay7ar@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>ليبيا</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-car"></i>
+                    <span>عناية شاملة لسيارتك</span>
+                </div>
+            </div>
+            <p class="copyright">جميع الحقوق محفوظة &copy; 2026 متجر بريق - bariq</p>
+        </div>
     </footer>
 
+    <script>
+        // إظهار/إخفاء حقل المدينة الأخرى
+        document.getElementById('city').addEventListener('change', function() {
+            const otherCityGroup = document.getElementById('otherCityGroup');
+            if (this.value === 'أخرى') {
+                otherCityGroup.style.display = 'block';
+                document.getElementById('otherCity').required = true;
+            } else {
+                otherCityGroup.style.display = 'none';
+                document.getElementById('otherCity').required = false;
+            }
+        });
+        
+        // معالجة إرسال النموذج
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // جمع بيانات النموذج
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const otherCity = document.getElementById('otherCity').value;
+            const quantity = document.getElementById('quantity').value;
+            
+            // إنشاء رقم طلب عشوائي
+            const orderNum = 'BRQ-' + new Date().getFullYear() + '-' + Math.floor(100 + Math.random() * 900);
+            document.getElementById('orderNumber').textContent = orderNum;
+            
+            // إنشاء محتوى البريد الإلكتروني
+            const finalCity = city === 'أخرى' ? otherCity : city;
+            const emailSubject = `طلب جديد - باقة الرؤية الواضحة - ${orderNum}`;
+            const emailBody = `
+طلب جديد من متجر بريق - عناية السيارات:
+
+رقم الطلب: ${orderNum}
+الاسم: ${name}
+رقم الهاتف: ${phone}
+المدينة: ${finalCity}
+الكمية: ${quantity} باقة
+السعر الإجمالي: ${quantity * 55} دينار
+            `;
+            
+            // إرسال البيانات إلى البريد الإلكتروني (محاكاة)
+            // في التطبيق الفعلي، تحتاج إلى استخدام خدمة مثل Formspree أو إعداد بريد خادم
+            const mailtoLink = `mailto:fay7ar@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // محاكاة إرسال البريد
+            setTimeout(() => {
+                // إظهار رسالة التأكيد
+                document.getElementById('confirmationMessage').classList.add('show');
+                
+                // تمرير إلى أعلى الصفحة لرؤية الرسالة
+                document.getElementById('confirmationMessage').scrollIntoView({ behavior: 'smooth' });
+                
+                // إعادة تعيين النموذج (اختياري)
+                // document.getElementById('orderForm').reset();
+                // document.getElementById('otherCityGroup').style.display = 'none';
+            }, 800);
+            
+            // فتح عميل البريد الافتراضي (يمكن تعطيله واستخدام خدمة Formspree بدلاً منه)
+            // window.location.href = mailtoLink;
+        });
+        
+        // توليد رقم طلب عشوائي عند تحميل الصفحة
+        window.onload = function() {
+            const orderNum = 'BRQ-' + new Date().getFullYear() + '-' + Math.floor(100 + Math.random() * 900);
+            document.getElementById('orderNumber').textContent = orderNum;
+        };
+    </script>
 </body>
 </html>
