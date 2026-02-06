@@ -211,6 +211,13 @@
             box-shadow: 0 6px 15px rgba(57, 73, 171, 0.3);
         }
         
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
         /* Confirmation Message */
         .confirmation {
             background-color: #e8f5e9;
@@ -509,7 +516,7 @@
                     </select>
                 </div>
                 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="submitBtn">
                     <i class="fas fa-paper-plane"></i> تأكيد الطلب
                 </button>
             </form>
@@ -545,6 +552,22 @@
     </footer>
 
     <script>
+        // توليد رقم طلب عشوائي
+        function generateOrderNumber() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const randomNum = Math.floor(100 + Math.random() * 900);
+            return `BRQ-${year}${month}${day}-${randomNum}`;
+        }
+        
+        // تعيين رقم الطلب عند تحميل الصفحة
+        window.onload = function() {
+            const orderNum = generateOrderNumber();
+            document.getElementById('orderNumber').textContent = orderNum;
+        };
+        
         // إظهار/إخفاء حقل المدينة الأخرى
         document.getElementById('city').addEventListener('change', function() {
             const otherCityGroup = document.getElementById('otherCityGroup');
@@ -558,60 +581,79 @@
         });
         
         // معالجة إرسال النموذج
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // جمع بيانات النموذج
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
+            // التحقق من صحة النموذج
             const city = document.getElementById('city').value;
             const otherCity = document.getElementById('otherCity').value;
-            const quantity = document.getElementById('quantity').value;
             
-            // إنشاء رقم طلب عشوائي
-            const orderNum = 'BRQ-' + new Date().getFullYear() + '-' + Math.floor(100 + Math.random() * 900);
-            document.getElementById('orderNumber').textContent = orderNum;
+            if (city === 'أخرى' && (!otherCity || otherCity.trim() === '')) {
+                alert('يرجى إدخال اسم المدينة');
+                document.getElementById('otherCity').focus();
+                return;
+            }
             
-            // إنشاء محتوى البريد الإلكتروني
-            const finalCity = city === 'أخرى' ? otherCity : city;
-            const emailSubject = `طلب جديد - باقة الرؤية الواضحة - ${orderNum}`;
-            const emailBody = `
-طلب جديد من متجر بريق - عناية السيارات:
-
-رقم الطلب: ${orderNum}
-الاسم: ${name}
-رقم الهاتف: ${phone}
-المدينة: ${finalCity}
-الكمية: ${quantity} باقة
-السعر الإجمالي: ${quantity * 55} دينار
-            `;
+            // تعطيل زر الإرسال
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري إرسال الطلب...';
             
-            // إرسال البيانات إلى البريد الإلكتروني (محاكاة)
-            // في التطبيق الفعلي، تحتاج إلى استخدام خدمة مثل Formspree أو إعداد بريد خادم
-            const mailtoLink = `mailto:fay7ar@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-            
-            // محاكاة إرسال البريد
-            setTimeout(() => {
-                // إظهار رسالة التأكيد
-                document.getElementById('confirmationMessage').classList.add('show');
+            try {
+                // جمع بيانات النموذج
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const quantity = document.getElementById('quantity').value;
+                const finalCity = city === 'أخرى' ? otherCity : city;
+                const orderNum = generateOrderNumber();
+                const totalPrice = quantity * 55;
                 
-                // تمرير إلى أعلى الصفحة لرؤية الرسالة
-                document.getElementById('confirmationMessage').scrollIntoView({ behavior: 'smooth' });
+                // تحديث رقم الطلب في رسالة التأكيد
+                document.getElementById('orderNumber').textContent = orderNum;
                 
-                // إعادة تعيين النموذج (اختياري)
-                // document.getElementById('orderForm').reset();
-                // document.getElementById('otherCityGroup').style.display = 'none';
-            }, 800);
-            
-            // فتح عميل البريد الافتراضي (يمكن تعطيله واستخدام خدمة Formspree بدلاً منه)
-            // window.location.href = mailtoLink;
+                // إعداد بيانات Formsubmit
+                const formData = new FormData();
+                formData.append('_subject', `طلب جديد - باقة الرؤية الواضحة - ${orderNum}`);
+                formData.append('name', name);
+                formData.append('phone', phone);
+                formData.append('city', finalCity);
+                formData.append('quantity', quantity);
+                formData.append('totalPrice', `${totalPrice} دينار`);
+                formData.append('orderNumber', orderNum);
+                formData.append('_template', 'table');
+                formData.append('_captcha', 'false');
+                
+                // إرسال الطلب إلى Formsubmit باستخدام fetch
+                const response = await fetch('https://formsubmit.co/ajax/fay7ar@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    // إظهار رسالة التأكيد
+                    document.getElementById('confirmationMessage').classList.add('show');
+                    document.getElementById('confirmationMessage').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // إعادة تعيين النموذج
+                    document.getElementById('orderForm').reset();
+                    document.getElementById('otherCityGroup').style.display = 'none';
+                    
+                    // توليد رقم طلب جديد للمرة القادمة
+                    const newOrderNum = generateOrderNumber();
+                    document.getElementById('orderNumber').textContent = newOrderNum;
+                } else {
+                    throw new Error('فشل إرسال الطلب');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.');
+            } finally {
+                // إعادة تمكين زر الإرسال
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> تأكيد الطلب';
+            }
         });
-        
-        // توليد رقم طلب عشوائي عند تحميل الصفحة
-        window.onload = function() {
-            const orderNum = 'BRQ-' + new Date().getFullYear() + '-' + Math.floor(100 + Math.random() * 900);
-            document.getElementById('orderNumber').textContent = orderNum;
-        };
     </script>
 </body>
 </html>
